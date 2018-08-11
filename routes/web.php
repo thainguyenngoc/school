@@ -16,6 +16,16 @@ $router->get('/', [
     'uses' => 'FrontEnd\StaticController@getHome',
     'middleware' => ['web']
 ]);
+$router->get('/1', [
+    'as' => 'root',
+    'uses' => 'FrontEnd\StaticController@teacher',
+    'middleware' => ['web']
+]);
+$router->get('/2', [
+    'as' => 'root',
+    'uses' => 'FrontEnd\StaticController@student',
+    'middleware' => ['web']
+]);
 
 $router->group([
     'as' => 'front-end.',
