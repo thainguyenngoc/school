@@ -45,20 +45,48 @@
             </div>
         @endif
 
+        {{-- For teacher --}}
+        @if(Auth::guard('teacher')->check())@if(Auth::guard('teacher')->user()->role === 1)
             <div class="dropdown">
-                <button class="dropbtn">Student</button>
+                <button class="dropbtn">Quản lý sinh viên</button>
                 <div class="dropdown-content">
-                    <a href="#">List Student</a>
-                    <a href="#">Add Student</a>
+                    <a href="#">Xem sinh viên</a>
+                    <a href="#">Thêm sinh viên</a>
                 </div>
             </div>
             <div class="dropdown">
-                <button class="dropbtn">Subject</button>
+                <button class="dropbtn">Quản lý giảng viên</button>
                 <div class="dropdown-content">
-                    <a href="#">List Subject</a>
-                    <a href="#">Add Subject</a>
+                    <a href="#">Xem giảng viên</a>
+                    <a href="#">Thêm giảng viên</a>
                 </div>
             </div>
+            <div class="dropdown">
+                <button class="dropbtn">Quản lý môn học</button>
+                <div class="dropdown-content">
+                    <a href="#">Xem môn học</a>
+                    <a href="#">Thêm môn học</a>
+                </div>
+            </div>
+        @endif @endif
+        @if(Auth::guard('teacher')->check())
+            <div class="dropdown">
+                <button class="dropbtn">Quản lý câu hỏi</button>
+                <div class="dropdown-content">
+                    <a href="#">Xem câu hỏi</a>
+                    <a href="#">Thêm câu hỏi</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Đăng kí</button>
+                <div class="dropdown-content">
+                    <a href="#">Lịch thi</a>
+                </div>
+            </div>
+        @endif
+        {{-- End for teacher --}}
+
+        
     </div>
     <div id="app">
         <main class="py-4">
