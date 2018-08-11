@@ -8,7 +8,14 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Blocks
+@import 'blocks/header';
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+.home-header {
+  font-size: 3em;
+  color: red;
 }
