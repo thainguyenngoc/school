@@ -22,16 +22,43 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body @if(Auth::guard('teacher')->check())style="background: #7154bf;"@endif>
     <div class="header">
+
+        @if(!Auth::guard('student')->check() && !Auth::guard('teacher')->check())
+            <div class="dropdown" style="float: right; width: 80px;">
+                <button class="dropbtn">Login</button>
+                <div class="dropdown-content">
+                    @if(!Auth::guard('student')->check())<a href="{{ route('student_get_login') }}">Student</a>@endif
+                    @if(!Auth::guard('teacher')->check())<a href="{{ route('teacher_get_login') }}">Admin</a>@endif
+                </div>
+            </div>
+        @endif
+
+        @if(Auth::guard('student')->check() || Auth::guard('teacher')->check())
+            <div class="dropdown" style="float: right; width: 80px;">
+                <button class="dropbtn">Logout</button>
+                <div class="dropdown-content">
+                    @if(Auth::guard('student')->check())<a href="{{ route('student_get_logout') }}">Student</a>@endif
+                    @if(Auth::guard('teacher')->check())<a href="{{ route('teacher_get_logout') }}">Admin</a>@endif
+                </div>
+            </div>
+        @endif
+
             <div class="dropdown">
-                    <button class="dropbtn">Dropdown</button>
-                    <div class="dropdown-content">
-                      <a href="#">Link 1</a>
-                      <a href="#">Link 2</a>
-                      <a href="#">Link 3</a>
-                    </div>
-                  </div>
+                <button class="dropbtn">Student</button>
+                <div class="dropdown-content">
+                    <a href="#">List Student</a>
+                    <a href="#">Add Student</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Subject</button>
+                <div class="dropdown-content">
+                    <a href="#">List Subject</a>
+                    <a href="#">Add Subject</a>
+                </div>
+            </div>
     </div>
     <div id="app">
         <main class="py-4">
